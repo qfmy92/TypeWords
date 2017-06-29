@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TypeWord</title>
+    <script src="js/typed.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+</head>
+<body>
+<div class="wrap">
+    <button id="btn" class="button button-3d button-action button-circle button-jumbo">run</button>
+    <button id="F5" class="button button-3d button-action button-circle button-jumbo">F5</button>
+    <button id="clear" class="button button-3d button-action button-circle button-jumbo">clear</button>
+</div>
+
+<div class="type-wrap" id="display-box" style="display: none"></div>
+<div class="type-wrap" id="text-box" contenteditable="true">
+    <div>请从#此部分将被替换$此开始</div>
+    <div>延时2s请用^2000</div>
+    <div>支持换行</div>
+</div>
+<script>
+    var button = document.getElementById('btn');
+    var F5 = document.getElementById('F5');
+    var clear = document.getElementById('clear');
+    var textBox = document.getElementById('text-box');
+    var displayBox = document.getElementById('display-box');
+
+
+    button.addEventListener('click', function () {
+        if (button.innerText === 'run') {
+            textBox.style.display = 'none';
+            displayBox.style.display = 'block';
+            button.innerText = 'edit';
+            run();
+        } else {
+            textBox.style.display = 'block';
+            displayBox.style.display = 'none';
+            button.innerText = 'run';
+        }
+    });
+
+    F5.addEventListener('click', function () {
+        history.go(0);
+    });
+    clear.addEventListener('click', function () {
+        textBox.innerHTML = '';
+    });
+
+    function run () {
+        displayBox.innerHTML = '';
+        let origin = document.getElementById('text-box').innerHTML;
+        origin = origin.replace(/\<div\>/g, '<div>#');
+        origin = origin.replace(/\<p\>/g, '<p>#');
+        origin = origin.replace(/\<br\/\>/g, '<br/>#');
+        let words = origin.split('#');
+
+        for (let i = 0; i < words.length; i++) {
+            let element = 'typed' + i;
+            let span = document.createElement('span');
+            span.id = element;
+            displayBox.appendChild(span);
+        }
+        animate(0, words);
+    }
+
+    function animate (count, words) {
+        let strings = [];
+        if (count < words.length)
+            if (words[count].indexOf('$') > 0) {
+                strings = words[count].split('$');
+            } else {
+                strings.push(words[count]);
+            } else {
+            run();
+        }
+
+        init('#typed' + count);
+
+        function init (selector) {
+            let elements = Array.prototype.slice.apply(document.querySelectorAll(selector));
+            elements.forEach(function (element) {
+                let instance = element._typed;
+                if (instance) {
+                    instance.reset();
+                }
+
+                element._typed = instance = new Typed(element, {
+                    strings: strings,
+                    typeSpeed: 100,
+                    backDelay: 1000,
+                    showCursor: true,
+                    loop: false,
+                    contentType: 'html',
+                    loopCount: null,
+                    callback: function () {
+                        instance.cursor.parentNode.removeChild(instance.cursor);
+                        count++;
+                        animate(count, words)
+                    }
+                });
+            });
+        }
+    }
+</script>
+</body>
+</html>

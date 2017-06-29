@@ -1,0 +1,141 @@
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  position: relative;
+  background-color: #1d2b2a;
+  background-image: url(../images/stripe.png), url(../images/noise.png);
+  background-repeat: repeat-x, repeat;
+  background-position: 0 0%;
+  background-attachment: fixed;
+  font-size: 21px;
+  font-family: Inconsolata, "Lucida Console", Monaco, Courier, monospace;
+  font-smooth: never;
+  line-height: 2em;
+  color: #d4f8e3;
+  -webkit-font-smoothing: none;
+  text-shadow: -2px 0 0px rgba(0, 0, 225, 0.4), -1px 0 3px rgba(103, 171, 236, 0.6), 1px 0 4px rgba(69, 112, 204, 0.5);
+  -moz-animation: blink 0.1s steps(2, start) infinite, skip 7s linear infinite, flicker 0.1s steps(2, start) infinite;
+  -webkit-animation: blink 0.1s steps(2, start) infinite, skip 7s linear infinite, flicker 0.1s steps(2, start) infinite;
+  animation: blink 0.1s steps(2, start) infinite, skip 7s linear infinite, flicker 0.1s steps(2, start) infinite;
+}
+
+@-moz-keyframes blink {
+  to {
+    background-color: #223332;
+  }
+}
+@-webkit-keyframes blink {
+  to {
+    background-color: #223332;
+  }
+}
+@keyframes blink {
+  to {
+    background-color: #223332;
+  }
+}
+
+@-moz-keyframes skip {
+    to {
+        background-position: 0 100%;
+    }
+}
+@-webkit-keyframes skip {
+    to {
+        background-position: 0 100%;
+    }
+}
+@keyframes skip {
+    to {
+        background-position: 0 100%;
+    }
+}
+
+@-moz-keyframes ready {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes ready {
+    to {
+        visibility: hidden;
+    }
+}
+@keyframes ready {
+    to {
+        visibility: hidden;
+    }
+}
+@media screen and (max-width: 400px) {
+    /* line 84, ../../_sass/404.scss */
+    #not-found body {
+        font-size: 18px;
+    }
+}
+
+.wrap{
+    text-align:center;
+}
+
+.type-wrap {
+    min-height:400px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    border: #CCC 1px solid;
+}
+
+.links {
+    margin: 20px 0;
+    font-size: 0.75em;
+    text-align: center;
+}
+
+/* code for animated blinking cursor */
+.typed-cursor{
+    opacity: 1;
+    font-weight: 100;
+    -webkit-animation: pointer 0.7s infinite;
+    -moz-animation: pointer 0.7s infinite;
+    -ms-animation: pointer 0.7s infinite;
+    -o-animation: pointer 0.7s infinite;
+    animation: pointer 0.7s infinite;
+}
+/*@-keyframes pointer{*/
+/*0% { opacity:1; }*/
+/*50% { opacity:0; }*/
+/*100% { opacity:1; }*/
+/*}*/
+@-webkit-keyframes pointer{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes pointer{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-ms-keyframes pointer{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-o-keyframes pointer{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.typed-fade-out{
+    opacity: 0;
+    animation: 0;
+    transition: opacity .25s;
+}
